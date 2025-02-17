@@ -33,6 +33,9 @@ jobs:
         docker tag hello-world-node:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest
         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest
 
+    - name: Debug AWS_ACCOUNT_ID
+      run: echo "AWS_ACCOUNT_ID=${{ secrets.AWS_ACCOUNT_ID }}"
+
     - name: Update ECS Task Definition
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
