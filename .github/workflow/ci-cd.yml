@@ -33,10 +33,18 @@ jobs:
         docker tag hello-world-node:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest
         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest
 
+    - name: Update ECS Task Definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: task-definition.json
+        container-name: hello-world-node
+        image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest
+
     - name: Deploy to ECS
-      uses: jakejarvis/ecs-deploy-action@v1.1.0
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         cluster: DevCluster
         service: ci-cd-service
-        task-definition: ci-cd-deployment
-        region: us-east-1
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        wait-for-service-stability: true
