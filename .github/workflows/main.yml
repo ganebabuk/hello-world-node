@@ -33,7 +33,7 @@ jobs:
         docker tag hello-world-node:latest ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest
         docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest
 
-    - name: Update ECS Task Definition
+    - name: Update ECS Task Definition 
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
@@ -50,5 +50,5 @@ jobs:
       with:
         cluster: DevCluster
         service: hello-world-service
-        task-definition: $(cat ${{ steps.task-def.outputs.task-definition }})
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
         wait-for-service-stability: true
