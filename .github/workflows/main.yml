@@ -43,7 +43,7 @@ jobs:
     
     - name: Debug task definition output
       run: |
-        echo "Task definition: ${{ steps.task-def.outputs.task-definition }}"
+        cat ${{ steps.task-def.outputs.task-definition }}
       
     - name: Deploy to ECS
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
