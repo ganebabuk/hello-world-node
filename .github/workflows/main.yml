@@ -45,6 +45,6 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         cluster: DevCluster
-        service: ci-cd-service
+        service: hello-world-service
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         wait-for-service-stability: true
