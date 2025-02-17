@@ -1,33 +1,33 @@
 {
-    "family": "hello-world-node-task",
-    "executionRoleArn": "arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/ecsTaskExecutionRole",
-    "networkMode": "awsvpc",
-    "containerDefinitions": [
-      {
-        "name": "hello-world-node",
-        "image": "YOUR_AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest",
-        "memory": 512,
-        "cpu": 256,
-        "essential": true,
-        "portMappings": [
-          {
-            "containerPort": 3000,
-            "hostPort": 3000,
-            "protocol": "tcp"
-          }
-        ],
-        "logConfiguration": {
-          "logDriver": "awslogs",
-          "options": {
-            "awslogs-group": "/ecs/hello-world-node",
-            "awslogs-region": "us-east-1",
-            "awslogs-stream-prefix": "ecs"
-          }
+  "family": "hello-world-node-task",
+  "executionRoleArn": "arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/ecsTaskExecutionRole",
+  "taskRoleArn": "arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/ecsTaskRole",
+  "networkMode": "awsvpc",
+  "containerDefinitions": [
+    {
+      "name": "hello-world-node",
+      "image": "YOUR_AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest",
+      "memory": 512,
+      "cpu": 256,
+      "essential": true,
+      "portMappings": [
+        {
+          "containerPort": 3000,
+          "hostPort": 3000,
+          "protocol": "tcp"
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "/ecs/hello-world-node",
+          "awslogs-region": "us-east-1",
+          "awslogs-stream-prefix": "ecs"
         }
       }
-    ],
-    "requiresCompatibilities": ["FARGATE"],
-    "memory": "1024",
-    "cpu": "512"
-  }
-  
+    }
+  ],
+  "requiresCompatibilities": ["FARGATE"],
+  "memory": "1024",
+  "cpu": "512"
+}
