@@ -1,18 +1,18 @@
 {
   "family": "hello-world-node-task",
-  "executionRoleArn": "arn:aws:iam::YOUR_AWS_ACCOUNT_ID:role/ecsTaskExecutionRole",
+  "executionRoleArn": "arn:aws:iam::${{ secrets.AWS_ACCOUNT_ID }}:role/ecsTaskExecutionRole",
   "networkMode": "awsvpc",
   "containerDefinitions": [
     {
       "name": "hello-world-node",
-      "image": "YOUR_AWS_ACCOUNT_ID.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest",
+      "image": "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest",
       "memory": 512,
       "cpu": 256,
       "essential": true,
       "portMappings": [
         {
           "containerPort": 3000,
-          "hostPort": 3000,
+          "hostPort": 0,
           "protocol": "tcp"
         }
       ],
