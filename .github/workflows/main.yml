@@ -42,7 +42,8 @@ jobs:
         image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest
     
     - name: Debug task definition output
-      run: echo "Task definition: ${{ steps.task-def.outputs.task-definition }}"
+      run: |
+        echo "Task definition: ${{ steps.task-def.outputs.task-definition }}"
       
     - name: Deploy to ECS
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
