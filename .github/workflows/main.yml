@@ -42,7 +42,7 @@ jobs:
         image: ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest
       
     - name: Deploy to ECS
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v3
       with:
         cluster: DevCluster
         service: hello-world-service
