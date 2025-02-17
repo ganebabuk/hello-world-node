@@ -50,5 +50,5 @@ jobs:
       with:
         cluster: DevCluster
         service: hello-world-service
-        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        task-definition: $(cat ${{ steps.task-def.outputs.task-definition }})
         wait-for-service-stability: true
