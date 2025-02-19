@@ -5,14 +5,14 @@
   "containerDefinitions": [
     {
       "name": "hello-world-node",
-      "image": "${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.us-east-1.amazonaws.com/hello-world-node:latest",
+      "image": "",  // This will be replaced by the GitHub Action
       "memory": 512,
       "cpu": 256,
       "essential": true,
       "portMappings": [
         {
           "containerPort": 3000,
-          "hostPort": 0,
+          "hostPort": 3000, // Or 0 if you are using ALB
           "protocol": "tcp"
         }
       ],
