@@ -5,14 +5,14 @@
   "containerDefinitions": [
     {
       "name": "hello-world-node",
-      "image": "",  // This will be replaced by the GitHub Action
+      "image": "",
       "memory": 512,
       "cpu": 256,
       "essential": true,
       "portMappings": [
         {
           "containerPort": 3000,
-          "hostPort": 3000, // Or 0 if you are using ALB
+          "hostPort": 3000,
           "protocol": "tcp"
         }
       ],
